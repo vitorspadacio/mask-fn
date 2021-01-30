@@ -65,15 +65,13 @@ jobs:
 
 workflows:
   version: 2
-  test-deploy:
+  build-test-publish:
     jobs:
       - build
       - test:
           requires:
             - build
       - publish:
+          type: approval
           requires:
             - test
-          # filters:
-          #   tags:
-          #     only: /^v.*/
