@@ -1,4 +1,4 @@
-import { ALPHA, ALPHANUM, charMatchPattern, DIGIT, patternCharIsNotMatcher } from '../pattern-matcher'
+import { ALPHA, ALPHANUM, charMatchPattern, DIGIT, patternCharIsNotMatcher } from '../src/pattern-matcher'
 
 describe('PatternMatcher', () => {
   describe('charMatchPattern', () => {

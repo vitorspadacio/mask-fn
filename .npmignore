@@ -1,0 +1,6 @@
+.circleci/
+.editorconfig
+README.md
+coverage
+jest.config.js
+tests/

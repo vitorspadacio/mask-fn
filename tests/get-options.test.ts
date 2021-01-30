@@ -1,4 +1,4 @@
-import { getOptions, Options } from '../get-options'
+import { getOptions, Options } from '../src/get-options'
 
 const createOptions = (patterns, placeholder = undefined, noLimit = false) => ({
   patterns,

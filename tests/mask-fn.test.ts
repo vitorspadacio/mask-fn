@@ -1,4 +1,4 @@
-import { mask } from '../mask-fn'
+import { mask } from '../src/mask-fn'
 
 describe('Mask', () => {
   const cases = [

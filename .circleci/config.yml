@@ -1,0 +1,81 @@
+version: 2.1
+
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:lts
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Build App
+          command: yarn build
+      
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Run Tests
+          command: yarn test
+
+      - coveralls/upload
+
+  
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run:
+          name: Set Npm Token
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
+          command: envsubst < .env.production 
+
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - build
+      - test
+          requires:
+            - build
+      - publish
+          requires:
+            - test
+          # filters:
+          #   tags:
+          #     only: /^v.*/

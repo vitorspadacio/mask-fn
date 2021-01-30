@@ -1,4 +1,4 @@
-import { getPattern, removePatternDecorations } from '../get-pattern'
+import { getPattern, removePatternDecorations } from '../src/get-pattern'
 
 describe('GetPattern', () => {
   describe('getPattern', () => {
