@@ -57,7 +57,7 @@ jobs:
 
       - run:
           name: Set Npm Token
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 
       - run:
           name: Publish package
