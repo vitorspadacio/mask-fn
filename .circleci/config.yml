@@ -48,9 +48,8 @@ jobs:
           command: yarn test
 
       - coveralls/upload
-
   
-  deploy:
+  publish:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -59,7 +58,6 @@ jobs:
       - run:
           name: Set Npm Token
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
-          command: envsubst < .env.production 
 
       - run:
           name: Publish package
@@ -70,10 +68,10 @@ workflows:
   test-deploy:
     jobs:
       - build
-      - test
+      - test:
           requires:
             - build
-      - publish
+      - publish:
           requires:
             - test
           # filters:
