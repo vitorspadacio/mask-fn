@@ -1,0 +1,26 @@
+{
+  "name": "mask-fn",
+  "version": "1.0.0",
+  "description": "A simple mask function library. No more thant that.",
+  "main": "mask-fn.js",
+  "scripts": {
+    "test": "jest ci --coverage --coverageReporters=lcov",
+    "test:watch": "jest --watchAll --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorspadacio/mask-fn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitorspadacio/mask-fn/issues"
+  },
+  "homepage": "https://github.com/vitorspadacio/mask-fn#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.0",
+    "typescript": "^4.1.3"
+  }
+}
