@@ -72,6 +72,5 @@ workflows:
           requires:
             - build
       - publish:
-          type: approval
           requires:
             - test
