@@ -16,9 +16,10 @@ describe('Mask', () => {
     ['40770868000195', { patterns: '999.999.999-99', noLimit: true }, '407.708.680-00195'],
     ['TEST123SURPLUS', { patterns: 'AAAA999', noLimit: true }, 'TEST123SURPLUS'],
     ['TESTX123SURPLUS', { patterns: 'AAAA999', noLimit: true }, 'TEST123SURPLUS'],
+    ['123.456', '999.999', '123.456'],
   ]
   test.each(cases)('when value is (%p) and options (%p) should mask equals (%p)',
-    (value: any, options: any, expectedResult: string) => {
+    (value: any, options: any, expectedResult: any) => {
       const result = mask(value, options)
       expect(result).toEqual(expectedResult)
     })

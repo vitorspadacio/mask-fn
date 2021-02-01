@@ -32,8 +32,10 @@ const maskValue = (value: string, pattern: string, placeholder: string): string 
       return valueChar
     }
 
-    if (patternCharIsNotMatcher(patternChar))
+    if (patternCharIsNotMatcher(patternChar)) {
+      if (patternChar === valueChar) valueIndex++
       return patternChar
+    }
 
     valueIndex++
     return
