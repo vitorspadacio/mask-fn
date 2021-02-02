@@ -1,6 +1,6 @@
 import { getOptions, Options } from './get-options'
 import { getPattern, removePatternDecorations } from './get-pattern'
-import { charMatchPattern, patternCharIsNotMatcher } from './pattern-matcher'
+import { charMatchAnyPattern, charMatchPattern, patternCharIsNotMatcher } from './pattern-matcher'
 
 const addValueSurplus = (
   maskedValue: string,
@@ -50,4 +50,11 @@ export const mask = (value: string | number, options: string | string[] | Option
   const maskedValue = maskValue(valueString, pattern, placeholder)
 
   return addValueSurplus(maskedValue, noLimit, valueString, pattern)
+}
+
+export const unmask = (maskedValue: string): string => {
+  const valueArray = maskedValue.split('')
+
+  return valueArray.filter(valueChar => charMatchAnyPattern(valueChar))
+    .join('')
 }

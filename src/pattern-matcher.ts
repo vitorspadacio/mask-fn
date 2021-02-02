@@ -17,3 +17,6 @@ export const charMatchPattern = (patternChar: string, valueChar: string): boolea
 
 export const patternCharIsNotMatcher = (char: string): boolean =>
   !(charIsDigit(char)|| charIsAlphabetic(char) || charIsAlphanumeric(char))
+
+export const charMatchAnyPattern = (char: string): boolean =>
+  charMatchDigit(char) || charMatchAlphabetic(char) || charMatchAlphanumeric(char)

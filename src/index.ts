@@ -1,4 +1,4 @@
-import { mask } from './mask-fn'
+import { mask, unmask } from './mask-fn'
 
 export default mask
-export { mask }
+export { mask, unmask }
